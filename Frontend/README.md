@@ -36,3 +36,17 @@ One area to display the repositories of the user and another area to display the
 * Adding state management
 * Show common tools used for you daily development environment (linters, code formatter, git workflow, docker and so on)
 * Deploy the project somewhere
+
+#Design
+There are some designs for the project. All needed files can be found at [mockups folder](mockup)
+## Desktop view
+![Overview](images/1280.png)
+
+## Mobile views
+Initial state              |  Users
+:-------------------------:|:-------------------------:
+![](images/375.1.png)      |  ![](images/375.2.png)
+
+Empty                      |  Companies
+:-------------------------:|:-------------------------:
+![](images/375.3.png)      |  ![](images/375.4.png)
