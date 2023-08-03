@@ -4,9 +4,10 @@
 
 ## Learning Competencies
 - Challenge understanding.
-- Implement Object Oriented Desing, DDD, patterns and best practices.
-- Implement tests.
+- Implement Object Oriented Design, DDD, patterns and best practices.
+- Implementing robust testing is important.
 - Manipulate Input/Output correctly.
+
 
 ## The challenge
 
