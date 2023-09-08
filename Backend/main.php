@@ -1,6 +1,10 @@
 <?php
-require_once ("Grid.php");
-require_once ("Rover.php");
+
+use App\Classes\Grid;
+use App\Classes\Rover;
+
+require_once("api/app/Classes/Grid.php");
+require_once("api/app/Classes/Rover.php");
 
 /**
  * @param bool|array $input

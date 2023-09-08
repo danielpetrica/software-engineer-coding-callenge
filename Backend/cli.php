@@ -1,4 +1,5 @@
 <?php
+include ("vendor/autoload.php");
 $file_name = "input.txt";
 require_once 'main.php';
 

@@ -8,6 +8,39 @@
 - Implementing robust testing is important.
 - Manipulate Input/Output correctly.
 
+---
+
+# Candidate Notes
+Deployed the project using php8.1
+
+Solved the project in two phases. 
+The initial version, visible in my first commit was aimed at demonstrating the algorithm resolution through a simple 
+cli script. 
+Then once it has been demonstrated, I deployed an api under the api/ folder to demonstrate how an api would work in 
+such a case. 
+
+The first cli is still usable by editing the `input.txt` file and executing `php cli.php`. The software will read 
+the input file and proceed to generate the output.
+
+The api accepts a Post request on the `/mars` route with a text body containing the input instructions. 
+To simulate the logic for a real Mars rover mission and preserve the rovers, the code will stop if it encounters an out 
+of bond or instruction for a rover or fails to initialize the grid. 
+
+The api and cli use the same classes to avoid duplications. They're located in app/Classes
+
+To test the cli please run `vendor/bin/phpunit tests/GeneralTest.php` in this folder after having installed composer. 
+
+To test the api please execute  `php artisan test` inside the api folder.
+
+## Installation
+execute `composer install` inside this folder 
+
+execute `composer install` inside the api folder  then `cp .env.example .env` to create the env file and finally `php 
+artisan key:generate` to generate and app key  
+
+execute `php artisan serve` inside the api folder to serve the api for the project
+
+---
 
 ## The challenge
 

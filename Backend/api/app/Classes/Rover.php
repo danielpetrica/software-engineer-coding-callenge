@@ -1,18 +1,21 @@
 <?php
 
-require_once ("Grid.php");
+namespace App\Classes;
+
+use Exception;
 
 class Rover
 {
     public Direction $direction;
 
     /**
-     * @param int $x
-     * @param int $y
-     * @param Direction    $direction
+     * @param int       $x
+     * @param int       $y
+     * @param Direction $direction
      */
-    public function __construct(public int $x, public int $y, string $direction) {
-        $this->direction = DIrection::FromString($direction);
+    public function __construct (public int $x, public int $y, string $direction)
+    {
+        $this->direction = Direction::FromString($direction);
     }
 
     /**
@@ -24,22 +27,31 @@ class Rover
      * @return void
      * @throws \Exception
      */
-    public function move (string $movements, Grid $grid) {
+    public function move (string $movements, Grid $grid): void
+    {
 
         // get the movement string as an array of chars
         $moves = str_split($movements);
-
-        foreach ($moves as $step) {
-            if ($step == 'M') {
+        foreach ($moves as $step)
+        {
+            if ($step == 'M')
+            {
                 // Can I progress in that direction?
-                if ($grid->check_rover_advance($this)) {
+                if ($grid->check_rover_advance($this))
+                {
                     $this->advance();
-                } else {
+                }
+                else
+                {
                     throw new Exception("Move Out of bonds, Movement interupted to save rovers");
                 }
-            } elseif ($step == 'R') {
+            }
+            else if ($step == 'R')
+            {
                 $this->direction = $this->direction->rotate($step);
-            } elseif ($step == 'L') {
+            }
+            else if ($step == 'L')
+            {
                 $this->direction = $this->direction->rotate($step);
             }
         }
@@ -50,7 +62,8 @@ class Rover
      */
     private function advance (): void
     {
-        switch ($this->direction->name) {
+        switch ($this->direction->name)
+        {
             case 'N':
                 $this->y += 1;
             break;
@@ -77,11 +90,12 @@ class Rover
 /**
  * enum used for directions
  */
-enum Direction: int {
+enum Direction: int
+{
 
     case N = 0;
     case E = 1;
-    case S  = 2;
+    case S = 2;
     case W = 3;
 
     /**
@@ -91,7 +105,8 @@ enum Direction: int {
      */
     public static function FromString (string $direction): Direction
     {
-        return match ($direction) {
+        return match ($direction)
+        {
             'N' => Direction::N,
             'E' => Direction::E,
             'S' => Direction::S,
@@ -104,16 +119,17 @@ enum Direction: int {
      *
      * @return \Direction
      */
-    public function rotate(string $move): Direction {
+    public function rotate (string $move): Direction
+    {
         switch ($move)
         {
             case 'L':
                 // modulo % in php is broken for negatives
                 $number = ($this->value + -1) % 4;
-
-                if( $number < 0)
-                    $number = $number +4;
-
+                if ($number < 0)
+                {
+                    $number = $number + 4;
+                }
                 return Direction::from($number);
             case 'R':
                 return Direction::from(($this->value + +1) % 4);
